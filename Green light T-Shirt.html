@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green light Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Banner Diskon Terbatas -->
+    <div class="promo-bar">
+        🔥 DISKON TERBATAS! Dapatkan promo spesial hari ini sebelum kehabisan. 🔥
+    </div>
+
+    <!-- Header & Navigasi -->
+    <header>
+        <div class="nav-brand">🟢 GREEN LIGHT STORE</div>
+        <div class="nav-menu">
+            <span>Katalog</span>
+            <button class="cart-nav-btn">🛒 Keranjang <span id="cart-count">0</span></button>
+        </div>
+    </header>
+
+    <section class="hero-banner">
+        <h1>Elevate Your Everyday Style</h1>
+        <p>Pilih produk favorit Anda, masukkan ke keranjang, dan pesan via WhatsApp.</p>
+    </section>
+
+    <!-- Konten Utama -->
+    <div class="container">
+        
+        <!-- Bagian Katalog Produk (Lengkap 6 Produk) -->
+        <h2 class="section-title">Katalog Produk</h2>
+        <div class="product-grid">
+
+            <div class="product-card">
+                <img src="celana.jpeg" alt="Cotton Fleece Baggy Pants" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Cotton Fleece Baggy Pants (Abu-Abu)</h3>
+                    <p class="product-desc">Celana santai bahan cotton fleece yang nyaman.</p>
+                    <p class="product-price">Rp 189.000</p>
+                    <button class="btn-buy" onclick="addToCart('Cotton Fleece Baggy Pants', 189000)">+ Tambah ke Keranjang</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="hoodie.jpeg" alt="Green Light Acid Washed Hoodie" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Green Light Acid Washed Hoodie</h3>
+                    <p class="product-desc">Hoodie washed hitam bermotif bercak ala streetwear.</p>
+                    <p class="product-price">Rp 249.000</p>
+                    <button class="btn-buy" onclick="addToCart('Green Light Acid Washed Hoodie', 249000)">+ Tambah ke Keranjang</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="jaket.jpeg" alt="Black Tactical Windbreaker Jacket" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Black Tactical Windbreaker Jacket</h3>
+                    <p class="product-desc">Jaket parasut hitam dengan penutup kepala outdoor.</p>
+                    <p class="product-price">Rp 329.000</p>
+                    <button class="btn-buy" onclick="addToCart('Black Tactical Windbreaker Jacket', 329000)">+ Tambah ke Keranjang</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="kacamata.jpeg" alt="Outdoor Sport Glasses" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Outdoor Sport Glasses (Rainbow Lens)</h3>
+                    <p class="product-desc">Kacamata sepeda/olahraga lensa pelangi visor.</p>
+                    <p class="product-price">Rp 99.000</p>
+                    <button class="btn-buy" onclick="addToCart('Outdoor Sport Glasses', 99000)">+ Tambah ke Keranjang</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="sandal.jpeg" alt="Platform Clog Sandals" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Platform Clog Sandals (Pin Included)</h3>
+                    <p class="product-desc">Sandal clog santai dengan hiasan pin lucu.</p>
+                    <p class="product-price">Rp 135.000</p>
+                    <button class="btn-buy" onclick="addToCart('Platform Clog Sandals', 135000)">+ Tambah ke Keranjang</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="topi.jpeg" alt="Trucker Hat Y2K" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Trucker Hat Y2K "Soul Safira"</h3>
+                    <p class="product-desc">Topi trucker gaya Y2K warna light blue.</p>
+                    <p class="product-price">Rp 75.000</p>
+                    <button class="btn-buy" onclick="addToCart('Trucker Hat Y2K Soul Safira', 75000)">+ Tambah ke Keranjang</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Bagian Keranjang & Checkout -->
+        <h2 class="section-title" style="margin-top: 3rem;">Keranjang & Checkout</h2>
+        <div class="checkout-layout">
+            
+            <!-- Kolom Kiri: Isi Keranjang -->
+            <div class="cart-box">
+                <h3>Isi Keranjang Anda</h3>
+                <div id="cart-items-container" class="cart-items-list">
+                    <p class="empty-cart-text">Keranjang belanja Anda kosong.</p>
+                </div>
+                <div class="cart-total-box">
+                    <span>Total:</span>
+                    <span id="cart-total-price">Rp 0</span>
+                </div>
+            </div>
+
+            <!-- Kolom Kanan: Form Pengiriman & Pembayaran -->
+            <div class="checkout-box">
+                <h3>Data Pengiriman</h3>
+                <form id="paymentForm" onsubmit="processCheckout(event)">
+                    <div class="form-group">
+                        <label>Nama Lengkap</label>
+                        <input type="text" id="custName" required placeholder="Nama Anda">
+                    </div>
+                    <div class="form-group">
+                        <label>No. WhatsApp</label>
+                        <input type="tel" id="custPhone" required placeholder="08xxxxxxxxxx">
+                    </div>
+                    <div class="form-group">
+                        <label>Alamat Lengkap</label>
+                        <textarea id="custAddress" rows="3" required placeholder="Alamat..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Pembayaran</label>
+                        <select id="payMethod" required>
+                            <option value="Transfer Bank">Transfer Bank</option>
+                            <option value="E-Wallet (Gopay/OVO/Dana)">E-Wallet (Gopay/OVO/Dana)</option>
+                            <option value="COD (Bayar di Tempat)">COD (Bayar di Tempat)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-whatsapp">💬 Checkout ke WhatsApp</button>
+                </form>
+            </div>
+
+        </div>
+
+        <!-- Bagian Daftar Pesanan Masuk ke Website -->
+        <h2 class="section-title" style="margin-top: 3rem;">Daftar Pesanan Masuk (Website)</h2>
+        <div class="orders-box">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <h3 style="font-size: 1.15rem; color: #0f172a;">Riwayat Pesanan yang Masuk</h3>
+                <button onclick="clearOrders()" style="background: #ef4444; color: white; border: none; padding: 0.4rem 0.8rem; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: 600;">Hapus Riwayat</button>
+            </div>
+            <div id="orders-list-container">
+                <p class="empty-cart-text">Belum ada pesanan yang masuk ke website.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>-
